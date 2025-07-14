@@ -93,9 +93,7 @@ export default function NewMap() {
 
     fetchData();
 
-    const intervalId = setInterval(fetchData, 3000); // fetch every 3 seconds
-
-    return () => clearInterval(intervalId); // clean up on unmount
+    
   }, []);
 
   if (loading) return (
