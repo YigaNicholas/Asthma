@@ -1,16 +1,20 @@
+function Upper(){
 
-import { useEffect } from "react";
-
-function Upper() {
-
-   fetch('https://api.thingspeak.com/channels/3006338/feeds.json?api_key=YK2YQ9UJCEPUF1X1&results=2')
-   .then(res=>res.json())
-   .then(data=>{
-    const results =data.feeds.map(feed=>{
-        console.log('field1 :' ,feed.field1)
-    })
+    return(<>
+        <div className="bg-blue-500 text-white p-4">
+  Tailwind is working!
+</div>
+<div className="p-8">
+      <div className="bg-red-500 text-white p-4 rounded-lg font-bold">
+        MUST BE RED IF WORKING
+      </div>
+      <div className="mt-4 p-4 border-4 border-green-500">
+        MUST HAVE THICK GREEN BORDER
+      </div>
+    </div>
+    </>
+    )
     
-   })
-
 }
-export default Upper;
+
+export default Upper
