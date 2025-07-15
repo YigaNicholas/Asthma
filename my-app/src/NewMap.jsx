@@ -5,24 +5,21 @@ import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import ThermostatIcon from "@mui/icons-material/Thermostat";
 import WaterDropIcon from "@mui/icons-material/WaterDrop";
 import FilterDramaIcon from "@mui/icons-material/FilterDrama";
-import LocalGasStationIcon from "@mui/icons-material/LocalGasStation";
+
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from 'leaflet';
 import "leaflet/dist/leaflet.css";
+import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css';
+import 'leaflet-defaulticon-compatibility';
 import Battery80Icon from '@mui/icons-material/Battery80';
 import Battery60Icon from '@mui/icons-material/Battery60';
 import Battery50Icon from '@mui/icons-material/Battery50';
 import Battery30Icon from '@mui/icons-material/Battery30';
 import Battery20Icon from '@mui/icons-material/Battery20';
 import BatteryAlertIcon from '@mui/icons-material/BatteryAlert';
+import MasksIcon from '@mui/icons-material/Masks';
 
 // Fix for default marker icons in Leaflet with Webpack
-delete L.Icon.Default.prototype._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
-  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
-});
 
 // Component to handle map view changes
 function MapView({ center }) {
@@ -142,7 +139,7 @@ export default function NewMap() {
     { name: "Temperature", value: `${latestFeed.field3}  °C`, icon: <ThermostatIcon className="text-orange-500" fontSize="large" />, description: "Ambient temperature" },
     { name: "Humidity", value: `${latestFeed.field4} %`, icon: <WaterDropIcon className="text-blue-500" fontSize="large" />, description: "Relative humidity" },
     { name: "Large Dust Particles", value: `${latestFeed.field5} µg/m³`, icon: <FilterDramaIcon className="text-gray-500" fontSize="large" />, description: "PM2.5 concentration" },
-    { name: "Gas", value: `${latestFeed.field1} ppm`, icon: <LocalGasStationIcon className="text-yellow-500" fontSize="large" />, description: "Gas sensor reading" },
+    { name: "Harmful Gases", value: `${latestFeed.field1} ppm`, icon: <MasksIcon className="text-yellow-500" fontSize="large" />, description: "Gas sensor reading" },
     { name: 'Small Dust particles', value: `${latestFeed.field6} µg/m³`, icon: <FilterDramaIcon className="text-gray-500" fontSize="large" />, description:'PM2.5 concentration' }
   ];
 
