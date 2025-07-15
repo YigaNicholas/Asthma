@@ -93,6 +93,10 @@ export default function NewMap() {
 
     fetchData();
 
+    const intervalId = setInterval(fetchData, 3000); // fetch every 3 seconds
+
+    return () => clearInterval(intervalId); // clean up on unmount
+
     
   }, []);
 
@@ -105,7 +109,7 @@ export default function NewMap() {
   const latestFeed= data.feeds[data.feeds.length-1] || {}
 
 
-  const batteryLevel= Number(latestFeed.field3);// parse from string to number
+  const batteryLevel= Number(latestFeed.field7);// parse from string to number
 
 
   // battery percentage section
@@ -133,13 +137,13 @@ export default function NewMap() {
 
   
   const stats = [
-    { name: "Battery Percentage", value:`${latestFeed.field3}%`, icon: batteryIcon, description: "Current battery level" },
+    { name: "Battery Percentage", value:`${latestFeed.field7}%`, icon: batteryIcon, description: "Current battery level" },
     { name: "Carbon Monoxide", value: `${latestFeed.field2} ppm`, icon: <LocalFireDepartmentIcon className="text-red-500" fontSize="large" />, description: "Carbon monoxide detected" },
     { name: "Temperature", value: `${latestFeed.field3}  °C`, icon: <ThermostatIcon className="text-orange-500" fontSize="large" />, description: "Ambient temperature" },
     { name: "Humidity", value: `${latestFeed.field4} %`, icon: <WaterDropIcon className="text-blue-500" fontSize="large" />, description: "Relative humidity" },
-    { name: "Large Dust Particles", value: `${latestFeed.field6} µg/m³`, icon: <FilterDramaIcon className="text-gray-500" fontSize="large" />, description: "PM2.5 concentration" },
+    { name: "Large Dust Particles", value: `${latestFeed.field5} µg/m³`, icon: <FilterDramaIcon className="text-gray-500" fontSize="large" />, description: "PM2.5 concentration" },
     { name: "Gas", value: `${latestFeed.field1} ppm`, icon: <LocalGasStationIcon className="text-yellow-500" fontSize="large" />, description: "Gas sensor reading" },
-    { name: 'Small Dust particles', value: `${latestFeed.field5} µg/m³`, icon: <FilterDramaIcon className="text-gray-500" fontSize="large" />, description:'PM2.5 concentration' }
+    { name: 'Small Dust particles', value: `${latestFeed.field6} µg/m³`, icon: <FilterDramaIcon className="text-gray-500" fontSize="large" />, description:'PM2.5 concentration' }
   ];
 
   return (
