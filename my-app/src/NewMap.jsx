@@ -10,8 +10,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
 import './Leaflet'
-import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css';
-import 'leaflet-defaulticon-compatibility';
+
 import Battery80Icon from '@mui/icons-material/Battery80';
 import Battery60Icon from '@mui/icons-material/Battery60';
 import Battery50Icon from '@mui/icons-material/Battery50';
