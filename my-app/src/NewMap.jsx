@@ -7,8 +7,9 @@ import WaterDropIcon from "@mui/icons-material/WaterDrop";
 import FilterDramaIcon from "@mui/icons-material/FilterDrama";
 
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-import L from 'leaflet';
+
 import "leaflet/dist/leaflet.css";
+import './Leaflet'
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css';
 import 'leaflet-defaulticon-compatibility';
 import Battery80Icon from '@mui/icons-material/Battery80';
@@ -20,15 +21,7 @@ import BatteryAlertIcon from '@mui/icons-material/BatteryAlert';
 import MasksIcon from '@mui/icons-material/Masks';
 
 // Create a custom icon
-const customIcon = new L.Icon({
-  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
+
 
 // Component to handle map view changes
 function MapView({ center }) {
@@ -191,7 +184,7 @@ export default function NewMap() {
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={position} icon={customIcon}>
+            <Marker position={position} >
               <Popup>
                 Asthma Monitor Location<br/>{locationName}
               </Popup>
